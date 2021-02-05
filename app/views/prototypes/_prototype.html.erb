@@ -1,13 +1,18 @@
 <%# prototypeを複数回表示 %>
-<% prototype.length.times do |i| %>
+<%# prototype.length.times do |i| %>
+<% prototype.each do |i| %>
   <div class="card">
-    <%= link_to image_tag( prototype[i].image, class: :card__img ), prototype_path(prototype[i].id), method: :get %>
+    <%#= link_to image_tag( prototype[i].image, class: :card__img ), prototype_path(prototype[i].id), method: :get %>
+    <%= link_to image_tag( i.image, class: :card__img), prototype_path(i.id),method: :get %>
     <div class="card__body">
-      <%= link_to prototype[i].title, prototype_path(prototype[i].id), method: :get, class: :card__title %>
+      <%#= link_to prototype[i].title, prototype_path(prototype[i].id), method: :get, class: :card__title %>
+      <%= link_to i.title, prototype_path(i.id), method: :get, class: :card__title %> 
       <p class="card__summary">
-        <%= prototype[i].catch_copy %>
+        <%#= prototype[i].catch_copy %>
+        <%= i.catch_copy %>
       </p>
-      <%= link_to prototype[i].user.name, root_path, class: :card__user %>
+      <%#= link_to prototype[i].user.name, user_path(prototype[i].id), class: :card__user %>
+      <%= link_to i.user.name, user_path(i.user_id), class: :card__user %>
     </div>
   </div>
 <% end %>
