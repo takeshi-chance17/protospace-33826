@@ -12,7 +12,7 @@
         <%= i.catch_copy %>
       </p>
       <%#= link_to prototype[i].user.name, user_path(prototype[i].id), class: :card__user %>
-      <%= link_to i.user.name, user_path(i.id), class: :card__user %>
+      <%= link_to i.user.name, user_path(i.user_id), class: :card__user %>
     </div>
   </div>
 <% end %>
