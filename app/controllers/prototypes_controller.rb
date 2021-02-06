@@ -14,6 +14,7 @@ class PrototypesController < ApplicationController
     end
 
     def create
+        binding.pry
         prototype = Prototype.create(prototype_params)
 
         if prototype.save
@@ -33,11 +34,10 @@ class PrototypesController < ApplicationController
 
     def update
         prototype = Prototype.find(params[:id])
-
-        prototype = Prototype.find(params[:id]) 
         if prototype.update(prototype_params)
             redirect_to prototype_path(params[:id])
         else
+            set_prototype
             render :edit
         end
     end
@@ -58,7 +58,7 @@ class PrototypesController < ApplicationController
     end
 
     def move_to_index
-        unless user_signed_in? && @prototype.user_id == current_user.id
+        unless user_signed_in? || @prototype.user_id == current_user.id
             redirect_to action: :index
         end
     end
