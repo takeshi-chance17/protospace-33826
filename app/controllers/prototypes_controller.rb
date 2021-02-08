@@ -14,7 +14,6 @@ class PrototypesController < ApplicationController
     end
 
     def create
-        binding.pry
         prototype = Prototype.create(prototype_params)
 
         if prototype.save
